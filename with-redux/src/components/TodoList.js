@@ -1,18 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-function TodoList({ items }) {
-  return (
+function TodoList() {
+  const items = useSelector(state => state.items);
+  const dispatch = useDispatch();
+
+  const handleAddItem = () => {
+    dispatch({ type: "CREATE_ITEM", payload: 'React-redux Hooks API is out!' })
+  };
+
+  return <>
     <ul>
-      {items.map(item => <li>{item}</li>)}
+      {items.map((item) => <li key={item.id}>{item.description}</li>)}
     </ul>
-  )
+    <button onClick={handleAddItem}>Add Item</button>
+  </>
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.items
-  }
-}
-
-export default connect(mapStateToProps)(TodoList);
+export default TodoList;

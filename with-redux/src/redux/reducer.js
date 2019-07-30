@@ -2,7 +2,10 @@ import ACTIONS from './action';
 import _ from 'lodash';
 
 const defaultState = {
-  items: ['This is a sample description', 'This page describes the APIs for the built-in Hooks in React.']
+  items: [
+    { id: 1, description: 'This is a sample description' },
+    { id: 2, description: 'This page describes the APIs for the built-in Hooks in React.'} 
+  ]
 };
 
 const todoReducer = (state = defaultState, action) => {
